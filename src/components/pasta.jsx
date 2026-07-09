@@ -442,17 +442,6 @@
 
 // export default Pasta;
 
-
-
-
-
-
-
-
-
-
-
-
 // import React, { useEffect, useState } from "react";
 // import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -556,8 +545,7 @@
 //                   setIndex(i);
 //                   setOpen(true);
 //                 }}
-                
-                
+
 //                 onTouchMove={handleMove}
 //                 onTouchEnd={resetZoom}
 //               />
@@ -596,7 +584,6 @@ import {
   Scrollbar,
   Navigation,
   Pagination,
-  
 } from "swiper/modules";
 
 // Lightbox
@@ -634,25 +621,6 @@ const Pasta = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleMove = (e) => {
-    const img = e.currentTarget;
-    const rect = img.getBoundingClientRect();
-
-    const touch = e.touches[0];
-
-    const x = ((touch.clientX - rect.left) / rect.width) * 100;
-    const y = ((touch.clientY - rect.top) / rect.height) * 100;
-
-    img.style.transformOrigin = `${x}% ${y}%`;
-    img.style.transform = "scale(2)";
-  };
-
-  const resetZoom = (e) => {
-    const img = e.currentTarget;
-    img.style.transform = "scale(1)";
-    img.style.transformOrigin = "center";
-  };
-
   return (
     <motion.div
       className="container mx-auto py-10"
@@ -670,15 +638,7 @@ const Pasta = () => {
         pagination={{ clickable: true }}
         navigation={true}
         loop={true}
-        
-        modules={[
-          EffectCards,
-          Keyboard,
-          Scrollbar,
-          Navigation,
-          Pagination,
-          
-        ]}
+        modules={[EffectCards, Keyboard, Scrollbar, Navigation, Pagination]}
       >
         {images.map((img, i) => (
           <SwiperSlide key={i}>
@@ -686,40 +646,34 @@ const Pasta = () => {
               className="relative group overflow-hidden rounded-xl cursor-pointer"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
+                  onClick={() => {
+                    setIndex(i);
+                    setOpen(true);
+                  }}
             >
               <div className="zoom-container">
+               
                 <img
                   src={img}
                   loading="lazy"
                   alt={`menu-${i}`}
                   className="zoom-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   style={{
-                    filter:
-                      "sepia(15%) saturate(0.9) brightness(0.95)",
+                    filter: "sepia(15%) saturate(0.9) brightness(0.95)",
                   }}
-                  onClick={() => {
-                    setIndex(i);
-                    setOpen(true);
-                  }}
-                  onTouchMove={handleMove}
-                  onTouchEnd={resetZoom}
                 />
               </div>
 
               {/* Overlay */}
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/35 transition-all duration-300 flex items-center justify-center">
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/35 transition-all duration-300 flex items-center justify-center pointer-events-none">
                 <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div
                     className="w-12 h-12 rounded-full flex items-center justify-center"
                     style={{
-                      background:
-                        "rgba(201,169,110,0.9)",
+                      background: "rgba(201,169,110,0.9)",
                     }}
                   >
-                    <FaSearchPlus
-                      className="text-[#1A120B]"
-                      size={18}
-                    />
+                    <FaSearchPlus className="text-[#1A120B]" size={18} />
                   </div>
                 </div>
               </div>
@@ -734,8 +688,7 @@ const Pasta = () => {
               <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
-                  boxShadow:
-                    "inset 0 0 80px rgba(0,0,0,0.25)",
+                  boxShadow: "inset 0 0 80px rgba(0,0,0,0.25)",
                 }}
               />
             </motion.div>
