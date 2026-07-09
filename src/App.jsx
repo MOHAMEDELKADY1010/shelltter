@@ -1,122 +1,76 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import React ,{ useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Routes,useLocation } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+// import Menu from "./components/Menu";
+import Home from "./components/Home";
+import Loading from "./components/Loading";
+// import Pizza from "./components/Pizza";
+import Pasta from "./components/pasta";
+// import { useLocation } from "react-router-dom";
+
+import { loadMedia } from "./utils/loadMedia";
+import Offers from './components/Offers';
+
+
+const mediaUrls = [
+  // Add the URLs of all your media files here
+  "./assets/img/silder/big1.webp",
+  "./assets/img/silder/big2.webp",
+  "./assets/img/silder/big3.webp",
+  "./assets/img/silder/big4.webp",
+  "./assets/img/silder/big5.webp",
+  "./assets/img/silder/big6.webp",
+  "./assets/img/silder/big7.webp",
+  "./assets/img/silder/big8.webp",
+  "./assets/img/silder/big9.webp",
+  "./assets/img/silder/big10.jpg",
+  "./assets/img/hero.jpg",
+  "./assets/img/logo.png",
+  "https://res.cloudinary.com/daqznvdzn/video/upload/v1783558830/video_rmxmxv.mp4",
+
+  // Add more media URLs as needed
+];
 
 function App() {
-  const [count, setCount] = useState(0)
+    const location = useLocation();
+  const isPastaPage = location.pathname === "/Pasta";
+  const isMenuPage = location.pathname === "/menu";
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    // Load all media files
+    loadMedia(mediaUrls)
+      .then(() => {
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Failed to load media:", error);
+        setLoading(false);
+      });
+  }, []);
   return (
     <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+      {loading && <Loading />}
+      <div className="">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          {/* <Route path="/menu" element={<Menu />} /> */}
+          <Route path="/Pasta" element={<Pasta />} />
+          <Route path="/Pasta" element={<Pasta />} />
+          <Route path="/Offers" element={<Offers />} />
+          {/* <Route path="/Pizza" element={<Pizza />} /> */}
+          {/* <Route path="/Prost" element={<Prost />} /> */}
+        </Routes>
+        <Footer
+        //  hideFirstBranch={isPastaPage} 
+        //  hideSecondBranch={isMenuPage} 
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+        />
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
