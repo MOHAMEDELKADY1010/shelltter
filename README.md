@@ -1,16 +1,31 @@
-# React + Vite
+# 🍔 Shelter Restaurant Menu - منيو مطعم شيلتر
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+تطبيق ويب تفاعلي وجذاب مصمم خصيصاً لعرض قائمة الطعام (المنيو) لمطعم "شيلتر". يهدف المشروع إلى تقديم تجربة مستخدم سلسة وعصرية تتيح للعملاء استعراض الأصناف، المكونات، والأسعار بكل سهولة.
 
-Currently, two official plugins are available:
+## ✨ المميزات (Features)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* **الوصول السريع عبر (QR Code):** يمكن للعملاء الوصول إلى المنيو مباشرة وبسهولة بمجرد عمل مسح (Scan) لرمز الاستجابة السريعة المتوفر في المطعم.
+* **استعراض تفاعلي:** عرض أصناف المنيو باستخدام تقنية السحب والتمرير (Swiper/Carousel).
+* **تفاصيل الأصناف:** عرض واضح لمحتويات كل وجبة وأسعارها.
+* **عارض صور متقدم:** إمكانية النقر على صور الوجبات لتكبيرها وعرضها بملء الشاشة (Lightbox) لرؤية أدق التفاصيل.
+* **تصميم فاخر وعصري:** واجهة مستخدم مزودة بتأثيرات حركية جذابة وانتقالات سلسة لتجربة تصفح مميزة.
+* **متجاوب بالكامل:** تصميم يتكيف بسلاسة مع جميع مقاسات الشاشات (الهواتف المحمولة، الأجهزة اللوحية، وأجهزة الكمبيوتر).
 
-## React Compiler
+## 🛠️ التقنيات المستخدمة (Technologies Used)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+تم بناء هذا المشروع باستخدام أحدث تقنيات الويب لضمان الأداء العالي وتجربة المستخدم الممتازة:
 
-## Expanding the Oxlint configuration
+* **React.js:** لبناء واجهة المستخدم وتطوير المكونات.
+* **Tailwind CSS:** لتنسيق الواجهة بسرعة وبناء تصميم متجاوب وعصري.
+* **Framer Motion:** لإضافة تأثيرات حركية (Animations) سلسة عند ظهور العناصر.
+* **Swiper:** لإنشاء معرض صور (Slider/Carousel) للأصناف قابل للسحب.
+* **Yet Another React Lightbox:** لعمل تأثيرات تكبير الصور وعرضها بملء الشاشة.
+* **React Icons:** لتوفير الأيقونات المستخدمة في واجهة المستخدم.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## 🚀 المعاينة الحية (Live Demo)
+
+يمكنك تصفح النسخة الحية من المشروع المرفوعة على Vercel من خلال الرابط التالي:
+[رابط المشروع هنا - مثلاً: https://shelltter.vercel.app]
+
+
+
