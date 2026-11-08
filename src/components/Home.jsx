@@ -49,7 +49,7 @@ const Home = () => {
                 height: "100vh",
                 objectFit: "cover",
               }}
-              src={"https://res.cloudinary.com/daqznvdzn/video/upload/v1783558830/video_rmxmxv.mp4"}
+              src={"https://res.cloudinary.com/bqa5rdno/video/upload/v1794157029/video.mp4"}
               autoPlay
               loop
               muted
