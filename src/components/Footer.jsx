@@ -104,7 +104,7 @@ const Footer = ({
 
       <aside className="flex justify-center w-full pb-5">
         <p className="font-title text-sm capitalize text-black font-black ">
-          power by shorbagy agency.
+          power by <a href="https://wa.me/201010394673">Mohamed Elkady</a> .
         </p>
       </aside>
     </>
