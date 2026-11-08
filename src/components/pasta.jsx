@@ -567,6 +567,158 @@
 // };
 
 // export default Pasta;
+// import React, { useEffect, useState } from "react";
+// import { motion } from "framer-motion";
+// import { FaSearchPlus } from "react-icons/fa";
+
+// import { Swiper, SwiperSlide } from "swiper/react";
+
+// import "swiper/css";
+// import "swiper/css/effect-cards";
+// import "swiper/css/navigation";
+// import "swiper/css/pagination";
+
+// import {
+//   EffectCards,
+//   Keyboard,
+//   Scrollbar,
+//   Navigation,
+//   Pagination,
+// } from "swiper/modules";
+
+// // Lightbox
+// import Lightbox from "yet-another-react-lightbox";
+// import Zoom from "yet-another-react-lightbox/plugins/zoom";
+// import "yet-another-react-lightbox/styles.css";
+
+// const images = [
+//   "https://drive.google.com/file/d/1R1ZYiTWuLoV78_pKa9MsCPqJ8H-H6rRT/view?usp=drive_link",
+//   "https://drive.google.com/file/d/16wEeORhycayQCK3q5LZJpyX50nm788C5/view?usp=drive_link",
+//   "https://drive.google.com/file/d/1ZR-ymN6FbiaKYrUr-Fh5dd6gfXlSMWfF/view?usp=drive_link",
+//   "https://drive.google.com/file/d/1Xg7M3nHs4F_tpB0wB9mjSgWrMn3MkAy6/view?usp=drive_link",
+//   "https://drive.google.com/file/d/1yxhPHWE92a95va3yKZvYzUXo1GJFMvwd/view?usp=drive_link",
+//   "https://drive.google.com/file/d/1yxhPHWE92a95va3yKZvYzUXo1GJFMvwd/view?usp=drive_link",
+//   "https://drive.google.com/file/d/1Kb2JWz0o1T_pMAZIdnIf4HNXUcvv_iF_/view?usp=drive_link",
+//   "https://drive.google.com/file/d/14d-OxudbgfmyoQHlM4XFj74ZvfPLsSij/view?usp=drive_link",
+//   "https://drive.google.com/file/d/10856huztdPEPXurKLjpA2258SblbGBUi/view?usp=drive_link",
+//   "https://drive.google.com/file/d/1pYosfUpR52G5DMQr8z9rzHFA2IvvPjXg/view?usp=drive_link",
+//   "https://drive.google.com/file/d/1uPSIgJzKadgIdj5SyLh4fYLb-1MxgcSJ/view?usp=drive_link",
+//   "https://drive.google.com/file/d/1kCX1U7ytUtOycXYEg-I8fD564OiX5X0H/view?usp=drive_link",
+//   "https://drive.google.com/file/d/1VrpC3OoiI9MneFxzxzilxtV0nKTBxf_W/view?usp=drive_link",
+//   "https://drive.google.com/file/d/1M1kj4DoeNWIMzgfLqaqNvXs7RnrQ45Nn/view?usp=drive_link",
+//   "https://drive.google.com/file/d/1vLZy0IP-Br3ym-7gJtvQPLV_IKId9cE7/view?usp=drive_link",
+//   "https://drive.google.com/file/d/1_psTPxS0AxKZgd_2JcuAGvNroOtLpkys/view?usp=drive_link",
+//   "https://drive.google.com/file/d/1Iu4NXouwhBRAdMV4DGTvnfGv-W3tsG06/view?usp=drive_link",
+//   "https://drive.google.com/file/d/18E_JeZbcR8RTFxE1t5Tv7rElcaoRgV7l/view?usp=drive_link",
+//   "https://drive.google.com/file/d/1aoVRzb-Dry4MvC7N7yCYj0XdD8a7ZIx0/view?usp=drive_link",
+  
+// ];
+
+// const Pasta = () => {
+//   const [isSmallScreen, setIsSmallScreen] = useState(false);
+//   const [open, setOpen] = useState(false);
+//   const [index, setIndex] = useState(0);
+
+//   useEffect(() => {
+//     const handleResize = () => {
+//       setIsSmallScreen(window.innerWidth < 768);
+//     };
+
+//     handleResize();
+//     window.addEventListener("resize", handleResize);
+
+//     return () => window.removeEventListener("resize", handleResize);
+//   }, []);
+
+//   return (
+//     <motion.div
+//       className="container mx-auto py-10"
+//       initial={{ opacity: 0, y: 25 }}
+//       whileInView={{ opacity: 1, y: 0 }}
+//       viewport={{ once: true }}
+//       transition={{ duration: 0.8 }}
+//     >
+//       <Swiper
+//         effect={isSmallScreen ? "cards" : "slide"}
+//         grabCursor={true}
+//         slidesPerView={isSmallScreen ? 1 : 2}
+//         spaceBetween={20}
+//         keyboard={{ enabled: true }}
+//         pagination={{ clickable: true }}
+//         navigation={true}
+//         loop={true}
+//         modules={[EffectCards, Keyboard, Scrollbar, Navigation, Pagination]}
+//       >
+//         {images.map((img, i) => (
+//           <SwiperSlide key={i}>
+//             <motion.div
+//               className="relative group overflow-hidden rounded-xl cursor-pointer"
+//               whileHover={{ scale: 1.02 }}
+//               transition={{ duration: 0.3 }}
+//                   onClick={() => {
+//                     setIndex(i);
+//                     setOpen(true);
+//                   }}
+//             >
+//               <div className="zoom-container">
+               
+//                 <img
+//                   src={img}
+//                   loading="lazy"
+//                   alt={`menu-${i}`}
+//                   className="zoom-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+//                   style={{
+//                     filter: "sepia(15%) saturate(0.9) brightness(0.95)",
+//                   }}
+//                 />
+//               </div>
+
+//               {/* Overlay */}
+//               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/35 transition-all duration-300 flex items-center justify-center pointer-events-none">
+//                 <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+//                   <div
+//                     className="w-12 h-12 rounded-full flex items-center justify-center"
+//                     style={{
+//                       background: "rgba(201,169,110,0.9)",
+//                     }}
+//                   >
+//                     <FaSearchPlus className="text-[#1A120B]" size={18} />
+//                   </div>
+//                 </div>
+//               </div>
+
+//               {/* Luxury Corners */}
+//               <div className="absolute top-3 left-3 w-5 h-5 border-t border-l border-[#C9A96E]/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+//               <div className="absolute top-3 right-3 w-5 h-5 border-t border-r border-[#C9A96E]/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+//               <div className="absolute bottom-3 left-3 w-5 h-5 border-b border-l border-[#C9A96E]/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+//               <div className="absolute bottom-3 right-3 w-5 h-5 border-b border-r border-[#C9A96E]/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+//               {/* Frame Shadow */}
+//               <div
+//                 className="absolute inset-0 pointer-events-none"
+//                 style={{
+//                   boxShadow: "inset 0 0 80px rgba(0,0,0,0.25)",
+//                 }}
+//               />
+//             </motion.div>
+//           </SwiperSlide>
+//         ))}
+//       </Swiper>
+
+//       {/* Fullscreen Lightbox */}
+//       <Lightbox
+//         open={open}
+//         close={() => setOpen(false)}
+//         slides={images.map((img) => ({ src: img }))}
+//         index={index}
+//         plugins={[Zoom]}
+//       />
+//     </motion.div>
+//   );
+// };
+
+// export default Pasta;
+
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaSearchPlus } from "react-icons/fa";
@@ -591,13 +743,14 @@ import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
 
+// Automatically convert Drive /view links to direct image links
 const images = [
   "https://drive.google.com/file/d/1R1ZYiTWuLoV78_pKa9MsCPqJ8H-H6rRT/view?usp=drive_link",
   "https://drive.google.com/file/d/16wEeORhycayQCK3q5LZJpyX50nm788C5/view?usp=drive_link",
   "https://drive.google.com/file/d/1ZR-ymN6FbiaKYrUr-Fh5dd6gfXlSMWfF/view?usp=drive_link",
   "https://drive.google.com/file/d/1Xg7M3nHs4F_tpB0wB9mjSgWrMn3MkAy6/view?usp=drive_link",
   "https://drive.google.com/file/d/1yxhPHWE92a95va3yKZvYzUXo1GJFMvwd/view?usp=drive_link",
-  "https://drive.google.com/file/d/1yxhPHWE92a95va3yKZvYzUXo1GJFMvwd/view?usp=drive_link",
+  "https://drive.google.com/file/d/1yxhPHWE92a95va3yKZvYzUXo1GJFMvwd/view?usp=drive_link", // Note: This is a duplicate of the previous line
   "https://drive.google.com/file/d/1Kb2JWz0o1T_pMAZIdnIf4HNXUcvv_iF_/view?usp=drive_link",
   "https://drive.google.com/file/d/14d-OxudbgfmyoQHlM4XFj74ZvfPLsSij/view?usp=drive_link",
   "https://drive.google.com/file/d/10856huztdPEPXurKLjpA2258SblbGBUi/view?usp=drive_link",
@@ -611,8 +764,10 @@ const images = [
   "https://drive.google.com/file/d/1Iu4NXouwhBRAdMV4DGTvnfGv-W3tsG06/view?usp=drive_link",
   "https://drive.google.com/file/d/18E_JeZbcR8RTFxE1t5Tv7rElcaoRgV7l/view?usp=drive_link",
   "https://drive.google.com/file/d/1aoVRzb-Dry4MvC7N7yCYj0XdD8a7ZIx0/view?usp=drive_link",
-  
-];
+].map((url) => {
+  const match = url.match(/\/file\/d\/(.*?)\/view/);
+  return match ? `https://drive.google.com/uc?export=view&id=${match[1]}` : url;
+});
 
 const Pasta = () => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
@@ -655,13 +810,12 @@ const Pasta = () => {
               className="relative group overflow-hidden rounded-xl cursor-pointer"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
-                  onClick={() => {
-                    setIndex(i);
-                    setOpen(true);
-                  }}
+              onClick={() => {
+                setIndex(i);
+                setOpen(true);
+              }}
             >
-              <div className="zoom-container">
-               
+              <div className="zoom-container h-[400px]"> {/* Ensure a fixed height here so the images render consistently */}
                 <img
                   src={img}
                   loading="lazy"
